@@ -1,0 +1,65 @@
+C51 COMPILER V9.01   1                                                                     01/14/2017 16:33:38 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 1
+OBJECT MODULE PLACED IN 1.OBJ
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE 1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          任务四
+   3          2017-1-13 19:55:36
+   4                  点亮你们的第一个数码管 
+   5                  显示你们的学号最后一位
+   6          */
+   7          #include<reg52.h>
+   8          #define uchar unsigned char 
+   9          #define uint unsigned int
+  10          uchar code shu[]={0x3f,0x06,0x5b,0x4f,0x66,
+  11                                            0x6d,0x7d,0x07,0x7f,0x6f
+  12                                            /*前面是0~9的断选码*/,0x40/*-*/,};
+  13          sbit W = P3^6;
+  14          sbit D = P3^7;
+  15          // 大概延时x ms的函数
+  16          void Delay_xms(uint x);
+  17          // 数码管显示函数
+  18          void Shuma_Display(uchar w,uchar d);
+  19          void main(){  
+  20   1          while(1){           
+  21   2                      // 送位选
+  22   2                      P0 = 0xfe; // 1111 1110
+  23   2                      // 先把数据送到锁存器D口（输入口）
+  24   2                      // 再打开锁存器 
+  25   2                      W = 1;
+  26   2                      W = 0;
+  27   2                      // 送断选
+  28   2                      P0 = shu[0];
+  29   2                      D = 1;
+  30   2                      D = 0;
+  31   2         }
+  32   1      
+  33   1      }
+  34          
+  35          // 大概延时x ms的函数
+  36          void Delay_xms(uint x)
+  37          {
+  38   1              uint j;
+  39   1              uchar i;
+  40   1              for (j=0;j<x;j++)
+  41   1                      for (i=0;i<110;i++);
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     44    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
