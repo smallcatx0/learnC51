@@ -1,0 +1,82 @@
+C51 COMPILER V9.01   1                                                                     01/15/2017 15:14:33 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 1
+OBJECT MODULE PLACED IN 1.OBJ
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE 1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          任务六
+   3          2017-1-14 16:34:20
+   4                  用数码管显示你们的学号最后八位
+   5          */
+   6          #include<reg52.h>
+   7          #define uchar unsigned char 
+   8          #define uint unsigned int
+   9          uchar code shu[]={0x3f,0x06,0x5b,0x4f,0x66,
+  10                                            0x6d,0x7d,0x07,0x7f,0x6f
+  11                                            /*前面是0~9的断选码*//*,0x40:-*/,
+  12                                            0x77,0x7c,0x39,0x5e,0x79,0x71/*A-F*/
+  13                                            };
+  14          uchar code wei[]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  15          sbit W = P3^6;
+  16          sbit D = P3^7;
+  17          // 大概延时x ms的函数
+  18          void Delay_xms(uint x);
+  19          // 数码管显示函数
+  20          void Shuma_Display(uchar w,uchar d);
+  21          void main(){  
+  22   1          while(1){   
+  23   2              Shuma_Display(wei[7],shu[0]);
+  24   2                      Shuma_Display(wei[6],shu[1]);
+  25   2                      Shuma_Display(wei[5],shu[2]);
+  26   2                      Shuma_Display(wei[4],shu[0]);
+  27   2                      Shuma_Display(wei[3],shu[2]);
+  28   2                      Shuma_Display(wei[2],shu[0]);
+  29   2                      Shuma_Display(wei[1],shu[9]);
+  30   2                      Shuma_Display(wei[0],shu[0]);
+  31   2              
+  32   2         }
+  33   1      
+  34   1      }
+  35          
+  36          // 大概延时x ms的函数
+  37          void Delay_xms(uint x)
+  38          {
+  39   1              uint j;
+  40   1              uchar i;
+  41   1              for (j=0;j<x;j++)
+  42   1                      for (i=0;i<110;i++);
+  43   1      }
+  44          
+  45          void Shuma_Display(uchar w,uchar d){
+  46   1              uchar i=0;
+  47   1              // 送位选
+  48   1              P0 = w;
+  49   1              W = 1;
+  50   1              W = 0;
+  51   1              // 送断选
+  52   1              P0 = d;
+  53   1              D = 1;
+  54   1              D = 0;
+  55   1              for(;i<250;i++);
+C51 COMPILER V9.01   1                                                                     01/15/2017 15:14:33 PAGE 2   
+
+  56   1      
+  57   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    134    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

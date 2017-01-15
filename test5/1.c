@@ -39,7 +39,6 @@ void Delay_xms(uint x)
 }
 
 void Shuma_Display(uchar w,uchar d){
-	uchar i=0;
 	// หอฮปัก
 	P0 = w;
 	W = 1;

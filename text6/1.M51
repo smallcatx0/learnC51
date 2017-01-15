@@ -1,0 +1,171 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/15/2017  15:14:33  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\PROGRAM FILES\KEIL\C51\BIN\BL51.EXE STARTUP.obj, 1.obj TO 1 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  1.obj (1)
+
+
+LINK MAP OF MODULE:  1 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0052H     UNIT         ?PR?MAIN?1
+            CODE    0055H     001CH     UNIT         ?PR?_SHUMA_DISPLAY?1
+            CODE    0071H     0018H     UNIT         ?PR?_DELAY_XMS?1
+            CODE    0089H     0018H     UNIT         ?CO?1
+            CODE    00A1H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   1 (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?1
+
+?PR?MAIN?1
+  +--> ?CO?1
+  +--> ?PR?_SHUMA_DISPLAY?1
+
+?PR?_SHUMA_DISPLAY?1
+  +--> ?CO?1
+
+
+
+SYMBOL TABLE OF MODULE:  1 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:00A1H         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/15/2017  15:14:33  PAGE 2
+
+
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:00A4H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:00A1H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:00A1H         LINE#         133
+  C:00A3H         LINE#         134
+  C:00A4H         LINE#         135
+  C:00A5H         LINE#         136
+  C:00A7H         LINE#         185
+  C:00AAH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        main
+  C:0071H         PUBLIC        _Delay_xms
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:005EH         PUBLIC        _Shuma_Display
+  B:00B0H.7       PUBLIC        D
+  C:0099H         PUBLIC        wei
+  C:0089H         PUBLIC        shu
+  B:00B0H.6       PUBLIC        W
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0003H         LINE#         21
+  C:0003H         LINE#         22
+  C:0003H         LINE#         23
+  C:0009H         LINE#         24
+  C:0014H         LINE#         25
+  C:0023H         LINE#         26
+  C:0029H         LINE#         27
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/15/2017  15:14:33  PAGE 3
+
+
+  C:0038H         LINE#         28
+  C:003EH         LINE#         29
+  C:004DH         LINE#         30
+  C:0053H         LINE#         32
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY_XMS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        j
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:0071H         LINE#         37
+  C:0071H         LINE#         38
+  C:0071H         LINE#         41
+  C:007BH         LINE#         42
+  C:0088H         LINE#         43
+  -------         ENDPROC       _DELAY_XMS
+  C:0055H         SYMBOL        L?0017
+  C:005AH         SYMBOL        L?0018
+  -------         PROC          L?0016
+  -------         ENDPROC       L?0016
+  C:0055H         SYMBOL        L?0017
+  C:005AH         SYMBOL        L?0018
+  -------         PROC          _SHUMA_DISPLAY
+  D:0007H         SYMBOL        w
+  D:0005H         SYMBOL        d
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:005EH         LINE#         45
+  C:005EH         LINE#         46
+  C:0060H         LINE#         48
+  C:0062H         LINE#         49
+  C:0064H         LINE#         50
+  C:0066H         LINE#         52
+  C:0068H         LINE#         53
+  C:006AH         LINE#         54
+  C:006CH         LINE#         55
+  C:0070H         LINE#         57
+  -------         ENDPROC       _SHUMA_DISPLAY
+  -------         ENDMOD        1
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_XMS?1
+
+Program Size: data=9.0 xdata=0 code=173
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
