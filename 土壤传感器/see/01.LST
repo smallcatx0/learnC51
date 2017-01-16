@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   01                                                                    01/15/2017 14:51:36 PAGE 1   
+C51 COMPILER V9.01   01                                                                    01/15/2017 18:00:04 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE 01
@@ -8,19 +8,18 @@ COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE 01.c BROWSE DEBUG OBJ
 line level    source
 
    1          #include<reg52.h>
-   2          sbit Sd = P1^0;
+   2          #include "NIxie.H"
    3          void main(){
    4   1              while(1){
-   5   2                      if(Sd == 0)     P0 = 0x7e;
-   6   2                      else        P0 = 0xfe;
-   7   2      
-   8   2              }
-   9   1      }
+   5   2                      Shuma_Display(wei[0],shu[5]);
+   6   2                      Shuma_Display(wei[1],shu[3]);
+   7   2              }
+   8   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     13    ----
-   CONSTANT SIZE    =   ----    ----
+   CODE SIZE        =     51    ----
+   CONSTANT SIZE    =     25    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----

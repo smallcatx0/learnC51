@@ -186,7 +186,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>30</ColumnNumber>
+      <ColumnNumber>1</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
       <CurrentLine>1</CurrentLine>
@@ -1541,7 +1541,7 @@
       <Documents>
         <Doc>
           <Name>.\1.c</Name>
-          <ColumnNumber>30</ColumnNumber>
+          <ColumnNumber>1</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>1</CurrentLine>
         </Doc>

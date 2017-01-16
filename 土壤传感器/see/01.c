@@ -1,9 +1,8 @@
 #include<reg52.h>
-sbit Sd = P1^0;
+#include "NIxie.H"
 void main(){
 	while(1){
-		if(Sd == 0)	P0 = 0x7e;
-		else 	    P0 = 0xfe;
-
+		Shuma_Display(wei[0],shu[5]);
+		Shuma_Display(wei[1],shu[3]);
 	}
 }

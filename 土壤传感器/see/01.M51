@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        01/15/2017  14:51:36  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/15/2017  18:00:04  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -25,8 +25,10 @@ LINK MAP OF MODULE:  01 (?C_STARTUP)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     000DH     UNIT         ?PR?MAIN?01
-            CODE    0010H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0003H     0020H     UNIT         ?PR?MAIN?01
+            CODE    0023H     0019H     UNIT         ?CO?01
+            CODE    003CH     0013H     UNIT         ?PR?_SHUMA_DISPLAY?01
+            CODE    004FH     000CH     UNIT         ?C_C51STARTUP
 
 
 
@@ -39,6 +41,10 @@ SEGMENT
 ?C_C51STARTUP
   +--> ?PR?MAIN?01
 
+?PR?MAIN?01
+  +--> ?CO?01
+  +--> ?PR?_SHUMA_DISPLAY?01
+
 
 
 SYMBOL TABLE OF MODULE:  01 (?C_STARTUP)
@@ -47,21 +53,21 @@ SYMBOL TABLE OF MODULE:  01 (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:0010H         SEGMENT       ?C_C51STARTUP
+  C:004FH         SEGMENT       ?C_C51STARTUP
   I:0008H         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/15/2017  18:00:04  PAGE 2
+
+
   D:0082H         SYMBOL        DPL
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0013H         SYMBOL        IDATALOOP
+  C:0052H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/15/2017  14:51:36  PAGE 2
-
-
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
   N:0000H         SYMBOL        PDATASTART
@@ -69,41 +75,64 @@ SYMBOL TABLE OF MODULE:  01 (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:0010H         SYMBOL        STARTUP1
+  C:004FH         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:0010H         LINE#         133
-  C:0012H         LINE#         134
-  C:0013H         LINE#         135
-  C:0014H         LINE#         136
-  C:0016H         LINE#         185
-  C:0019H         LINE#         196
+  C:004FH         LINE#         133
+  C:0051H         LINE#         134
+  C:0052H         LINE#         135
+  C:0053H         LINE#         136
+  C:0055H         LINE#         185
+  C:0058H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        01
   C:0000H         SYMBOL        _ICE_DUMMY_
-  D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
   C:0003H         PUBLIC        main
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
-  B:0090H.0       PUBLIC        Sd
+  C:003CH         PUBLIC        _Shuma_Display
+  B:00A0H.7       PUBLIC        D
+  C:0034H         PUBLIC        wei
+  C:0023H         PUBLIC        shu
+  B:00A0H.6       PUBLIC        W
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
+  -------         PROC          _SHUMA_DISPLAY
+  D:0007H         SYMBOL        w
+  D:0005H         SYMBOL        d
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:003CH         LINE#         29
+  C:003CH         LINE#         32
+  C:003EH         LINE#         33
+  C:0040H         LINE#         34
+  C:0042H         LINE#         36
+  C:0044H         LINE#         37
+  C:0046H         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/15/2017  18:00:04  PAGE 3
+
+
+  C:0048H         LINE#         39
+  C:004EH         LINE#         41
+  -------         ENDPROC       _SHUMA_DISPLAY
   -------         PROC          MAIN
   C:0003H         LINE#         3
   C:0003H         LINE#         4
   C:0003H         LINE#         5
-  C:000BH         LINE#         6
-  C:000EH         LINE#         8
+  C:0012H         LINE#         6
+  C:0021H         LINE#         7
   -------         ENDPROC       MAIN
   -------         ENDMOD        01
 
-Program Size: data=9.0 xdata=0 code=28
+Program Size: data=9.0 xdata=0 code=91
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

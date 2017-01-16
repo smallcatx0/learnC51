@@ -2,7 +2,8 @@
 任务八
 2017-1-15 15:05:40
 	用单片机的定时器和数码管
-	做一个倒计时（精确到100毫秒）
+	做一个倒计时（精确到100毫秒）9-0
+								 9.9 - 0.0
 */
 #include<reg52.h>
 #define uchar unsigned char 
@@ -31,8 +32,7 @@ void main ()
 	EA=1;					//开总中断
 	ET0=1;					//开定时器0中断
 	TR0=1;				    //计数器开始工作
-	W=0;
-	D=0;	 
+		 
 
 	while(1){	 				 
 		Shuma_Display(wei[7],shu[time%10]);
@@ -72,5 +72,4 @@ void Shuma_Display(uchar w,uchar d){
 	D = 1;
 	D = 0;
 	for(;i<250;i++);
-
 }

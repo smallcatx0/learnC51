@@ -163,7 +163,7 @@
 
   <Group>
     <GroupName>Source Group 1</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
@@ -184,12 +184,12 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>4</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>16</TopLine>
-      <CurrentLine>32</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>5</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\1.c</PathWithFileName>
       <FilenameWithoutPath>1.c</FilenameWithoutPath>
@@ -1541,9 +1541,9 @@
       <Documents>
         <Doc>
           <Name>.\1.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>16</TopLine>
-          <CurrentLine>32</CurrentLine>
+          <ColumnNumber>4</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>5</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>
