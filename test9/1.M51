@@ -1,0 +1,227 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/16/2017  17:33:33  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\PROGRAM FILES\KEIL\C51\BIN\BL51.EXE STARTUP.obj, 1.obj TO 1 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  1.obj (1)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  1 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            DATA    000BH     0001H     UNIT         ?DT?1
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0004H     UNIT         ?C_INITSEG
+                    0007H     0004H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00B6H     UNIT         ?PR?MAIN?1
+            CODE    00C4H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0150H     001EH     UNIT         ?PR?_SHUMA_DISPLAY?1
+            CODE    016EH     0019H     UNIT         ?CO?1
+            CODE    0187H     0018H     UNIT         ?PR?_DELAY_XMS?1
+            CODE    019FH     0009H     UNIT         ?PR?T0_50MS?1
+
+
+
+OVERLAY MAP OF MODULE:   1 (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?1
+  +--> ?C_INITSEG
+
+?PR?MAIN?1                     0008H    0003H
+  +--> ?CO?1
+  +--> ?PR?_SHUMA_DISPLAY?1
+
+?PR?_SHUMA_DISPLAY?1           -----    -----
+  +--> ?CO?1
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/16/2017  17:33:33  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  1 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:00C4H         SEGMENT       ?C_C51STARTUP
+  I:000CH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:00C7H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:00C4H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:00C4H         LINE#         133
+  C:00C6H         LINE#         134
+  C:00C7H         LINE#         135
+  C:00C8H         LINE#         136
+  C:00CAH         LINE#         185
+  C:00CDH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:000BH         PUBLIC        t_50ms
+  C:000EH         PUBLIC        main
+  C:019FH         PUBLIC        T0_50ms
+  C:0187H         PUBLIC        _Delay_xms
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:015BH         PUBLIC        _Shuma_Display
+  B:00B0H.7       PUBLIC        D
+  C:017FH         PUBLIC        wei
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/16/2017  17:33:33  PAGE 3
+
+
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  C:016EH         PUBLIC        shu
+  B:00B0H.6       PUBLIC        W
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        hour
+  D:0009H         SYMBOL        min
+  D:000AH         SYMBOL        sec
+  -------         ENDDO         
+  C:000EH         LINE#         25
+  C:000EH         LINE#         26
+  C:000EH         LINE#         27
+  C:0011H         LINE#         28
+  C:0013H         LINE#         29
+  C:0015H         LINE#         30
+  C:0018H         LINE#         31
+  C:001BH         LINE#         32
+  C:001EH         LINE#         33
+  C:0020H         LINE#         34
+  C:0022H         LINE#         35
+  C:0024H         LINE#         37
+  C:0024H         LINE#         39
+  C:002FH         LINE#         40
+  C:003EH         LINE#         41
+  C:004DH         LINE#         44
+  C:0058H         LINE#         45
+  C:0067H         LINE#         46
+  C:0076H         LINE#         48
+  C:0081H         LINE#         49
+  C:0090H         LINE#         52
+  C:0097H         LINE#         53
+  C:009AH         LINE#         54
+  C:009CH         LINE#         55
+  C:00A2H         LINE#         56
+  C:00A5H         LINE#         57
+  C:00A7H         LINE#         58
+  C:00B0H         LINE#         59
+  C:00B3H         LINE#         60
+  C:00B5H         LINE#         61
+  C:00BEH         LINE#         62
+  C:00C1H         LINE#         63
+  C:00C1H         LINE#         64
+  C:00C1H         LINE#         65
+  C:00C1H         LINE#         66
+  C:00C1H         LINE#         67
+  -------         ENDPROC       MAIN
+  -------         PROC          T0_50MS
+  C:019FH         LINE#         69
+  C:019FH         LINE#         71
+  C:01A2H         LINE#         72
+  C:01A5H         LINE#         73
+  C:01A7H         LINE#         74
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/16/2017  17:33:33  PAGE 4
+
+
+  -------         ENDPROC       T0_50MS
+  -------         PROC          _DELAY_XMS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        j
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:0187H         LINE#         76
+  C:0187H         LINE#         77
+  C:0187H         LINE#         80
+  C:0191H         LINE#         81
+  C:019EH         LINE#         82
+  -------         ENDPROC       _DELAY_XMS
+  C:0150H         SYMBOL        L?0022
+  C:0156H         SYMBOL        L?0023
+  -------         PROC          L?0021
+  -------         ENDPROC       L?0021
+  C:0150H         SYMBOL        L?0022
+  C:0156H         SYMBOL        L?0023
+  -------         PROC          _SHUMA_DISPLAY
+  D:0007H         SYMBOL        w
+  D:0005H         SYMBOL        d
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:015BH         LINE#         84
+  C:015BH         LINE#         85
+  C:015DH         LINE#         87
+  C:015FH         LINE#         88
+  C:0161H         LINE#         89
+  C:0163H         LINE#         91
+  C:0165H         LINE#         92
+  C:0167H         LINE#         93
+  C:0169H         LINE#         94
+  C:016DH         LINE#         95
+  -------         ENDPROC       _SHUMA_DISPLAY
+  -------         ENDMOD        1
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_XMS?1
+
+Program Size: data=13.0 xdata=0 code=420
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

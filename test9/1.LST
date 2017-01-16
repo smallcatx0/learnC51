@@ -1,0 +1,120 @@
+C51 COMPILER V9.01   1                                                                     01/16/2017 17:33:33 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 1
+OBJECT MODULE PLACED IN 1.OBJ
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE 1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          任务九
+   3          2017-1-15 19:01:28
+   4                  用单片机的定时器和数码管
+   5                  做一个电子表（小时-分钟-秒） 
+   6          */
+   7          #include<reg52.h>
+   8          #define uchar unsigned char 
+   9          #define uint unsigned int
+  10          uchar code shu[]={0x3f,0x06,0x5b,0x4f,0x66,
+  11                                            0x6d,0x7d,0x07,0x7f,0x6f,
+  12                                            /*前面是0~9的断选码*/
+  13                                            0x77,0x7c,0x39,0x5e,0x79,0x71,/*A-F*/
+  14                                            0x40/*:-*/
+  15                                            };
+  16          uchar code wei[]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  17          uchar t_50ms = 0;
+  18          sbit W = P3^6;
+  19          sbit D = P3^7;
+  20          // 大概延时x ms的函数
+  21          void Delay_xms(uint x);
+  22          // 数码管显示函数
+  23          void Shuma_Display(uchar w,uchar d);
+  24          
+  25          void main ()
+  26          {
+  27   1              uchar hour=0;
+  28   1              uchar min=0;
+  29   1              uchar sec=0;
+  30   1              TMOD=0X01;                          // 设置定时器0为工作方式1
+  31   1              TH0=(65536-45872)/256;  // 装初值45872 在11.0592MHz下为50ms
+  32   1              TL0=(65536-45872)%256;
+  33   1              EA=1;                                   //开总中断
+  34   1              ET0=1;                                  //开定时器0中断
+  35   1              TR0=1;                              //计数器开始工作
+  36   1                       
+  37   1              while(1){               
+  38   2                      // 显示秒                        
+  39   2                      Shuma_Display(wei[7],shu[sec%10]);
+  40   2                      Shuma_Display(wei[6],shu[sec/10]);
+  41   2                      Shuma_Display(wei[5],shu[16]);
+  42   2                      // 显示分
+  43   2      
+  44   2                      Shuma_Display(wei[4],shu[min%10]);
+  45   2                      Shuma_Display(wei[3],shu[min/10]);
+  46   2                      Shuma_Display(wei[2],shu[16]);
+  47   2                      // 显示小时
+  48   2                      Shuma_Display(wei[1],shu[hour%10]);
+  49   2                      Shuma_Display(wei[0],shu[hour/10]);
+  50   2      
+  51   2      
+  52   2                      if(t_50ms>=20){
+  53   3                              t_50ms = 0;
+  54   3                              sec++;
+  55   3                              if(sec>=59){
+C51 COMPILER V9.01   1                                                                     01/16/2017 17:33:33 PAGE 2   
+
+  56   4                                 sec=0;
+  57   4                                 min++;
+  58   4                                 if(min>=59){
+  59   5                                     min=0;
+  60   5                                     hour++;
+  61   5                                         if(hour>=24){
+  62   6                                             hour=0;
+  63   6                                         }
+  64   5                                 }
+  65   4                              }
+  66   3                      }
+  67   2              }
+  68   1      }
+  69          void T0_50ms() interrupt 1
+  70          {       
+  71   1              TH0=(65536-45872)/256;
+  72   1              TL0=(65536-45872)%256;
+  73   1              t_50ms++;
+  74   1      }
+  75          // 大概延时x ms的函数
+  76          void Delay_xms(uint x)
+  77          {
+  78   1              uint j;
+  79   1              uchar i;
+  80   1              for (j=0;j<x;j++)
+  81   1                      for (i=0;i<110;i++);
+  82   1      }
+  83          // 数码管显示函数
+  84          void Shuma_Display(uchar w,uchar d){
+  85   1              uchar i=0;
+  86   1              // 送位选
+  87   1              P0 = w;
+  88   1              W = 1;
+  89   1              W = 0;
+  90   1              // 送断选
+  91   1              P0 = d;
+  92   1              D = 1;
+  93   1              D = 0;
+  94   1              for(;i<250;i++);
+  95   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    245    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
